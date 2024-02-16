@@ -1,1 +1,1 @@
-ini adalah halam profile
+ini adalah halaman profile

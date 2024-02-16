@@ -19,15 +19,3 @@ use App\Http\Controllers\ProfileContoller;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/testing', function(){
-    return view('hello');
-});
-
-Route::get('/parent', function(){
-    return view('admin/parent');
-});
-
-Route::resource('/about', AboutContoller::class);
-
-Route::get('/profile-index', [ProfileContoller::class, 'index'])->name('profileroute'); 
