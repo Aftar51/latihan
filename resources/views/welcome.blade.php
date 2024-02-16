@@ -120,7 +120,7 @@
                                 Sponsor
                             </a>
                         </div>
-                        <a href="{{ route('admin.parent') }}">Go To Admin</a>
+                        <a href="{{ route('admin.index') }}">Go To Admin</a>
                     </div>
 
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">

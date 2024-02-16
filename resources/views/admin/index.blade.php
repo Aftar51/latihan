@@ -1,1 +1,9 @@
-ini adalah halaman Admin index
+@extends('admin.parent')
+
+@section('content')
+
+<div class="container d-flex justify-content-end">
+    <a href="{{ route('admin.create') }}" class="btn btn-primary">Create admin</a>
+</div>
+
+@endsection
