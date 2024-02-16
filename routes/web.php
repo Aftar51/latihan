@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AboutContoller;
-use App\Http\Controllers\ProfileContoller;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +18,6 @@ use App\Http\Controllers\ProfileContoller;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route for AdminController With Resource
+Route::resource('admin', AdminController::class);
