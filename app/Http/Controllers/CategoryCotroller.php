@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use Illuminate\Support\Str; 
 use Illuminate\Http\Request;
 
 class CategoryCotroller extends Controller
@@ -23,7 +25,7 @@ class CategoryCotroller extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -34,8 +36,17 @@ class CategoryCotroller extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name)
+        ]);
+
+        return redirect()->route('category.admin');
+    }   
 
     /**
      * Display the specified resource.
