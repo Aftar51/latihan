@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use Illuminate\Support\Str; 
+use App\Models\Buah;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-class CategoryCotroller extends Controller
+class BuahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,7 @@ class CategoryCotroller extends Controller
      */
     public function index()
     {
-
-        $category = Category::all();
-
-        return view('category.index');
+        return view('buah.index');
     }
 
     /**
@@ -28,7 +25,7 @@ class CategoryCotroller extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        return view('buah.create');
     }
 
     /**
@@ -43,19 +40,15 @@ class CategoryCotroller extends Controller
             'name' => 'required'
         ]);
 
-        if(
-            Category::create([
+        Buah::create([
             'name' => $request->name,
-            'slug' => Str::slug($request->name)
-        ])
-    ){
-        return redirect()->route('category.admin')->with(['success' => 'Data Berhasil disimpan']);
-    } else{
-        return redirect()->route('category.admin')->with(['error'], 'Data gagal disimpan');
-    };
+            'slug' => Str::slug($request->name),
+            'harga' => $request->harga,
+            'warna' => $request->warna
+        ]);
 
-        
-    }   
+        return redirect()->route('category.admin');
+    }
 
     /**
      * Display the specified resource.
@@ -65,9 +58,7 @@ class CategoryCotroller extends Controller
      */
     public function show($id)
     {
-        $category = Category::findOrFail($id);
-
-        return view('category.show', compact('category'));
+        //
     }
 
     /**
@@ -78,9 +69,7 @@ class CategoryCotroller extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-
-        return view('category.edit', compact('category'));
+        //
     }
 
     /**
@@ -92,19 +81,7 @@ class CategoryCotroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name' => 'required'
-        ]);
-
-        $category = Category::findOrFail($id);
-
-        $category->update([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name)
-        ]);
-
-        return redirect()->route('category.index')
-            ->with(['success' => 'Data berhasil di diupdate']);
+        //
     }
 
     /**
